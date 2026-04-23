@@ -1,3 +1,3 @@
 window.APP_CONFIG = {
-  API_URL: "http://localhost:3000"
+  API_URL: "https://seahorse-app-pear2.ondigitalocean.app"
 };
