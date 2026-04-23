@@ -18,6 +18,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text);
   background: linear-gradient(180deg, #eaf1f8 0%, #f8fbff 50%, #f1f6fd 100%);
+  line-height: 1.4;
 }
 
 .layout {
@@ -26,6 +27,8 @@ body {
   gap: 1.25rem;
   grid-template-columns: 360px 1fr;
   padding: 1.25rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .panel {
@@ -39,11 +42,6 @@ body {
 h1,
 h2 {
   margin: 0 0 0.5rem;
-}
-
-.subtitle {
-  margin: 0 0 1rem;
-  color: var(--muted);
 }
 
 form {
@@ -61,6 +59,7 @@ input {
   border-radius: 8px;
   padding: 0.65rem 0.75rem;
   font-size: 0.95rem;
+  width: 100%;
 }
 
 .actions {
@@ -136,5 +135,49 @@ th {
 @media (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;
+    padding: 0.85rem;
+  }
+
+  .panel {
+    padding: 1rem;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  table {
+    min-width: 720px;
+  }
+
+  th,
+  td {
+    padding: 0.5rem;
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .layout {
+    padding: 0.65rem;
+    gap: 0.9rem;
+  }
+
+  h1,
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  input,
+  button {
+    font-size: 0.95rem;
+  }
+
+  .table-wrapper {
+    margin: 0 -0.25rem;
   }
 }
