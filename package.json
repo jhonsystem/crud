@@ -1,0 +1,10 @@
+{
+  "name": "crud-mantenimiento-personal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Launcher raiz para frontend+backend CRUD personal",
+  "scripts": {
+    "start": "npm --prefix backend start",
+    "dev": "npm --prefix backend start"
+  }
+}
