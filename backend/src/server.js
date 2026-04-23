@@ -5,15 +5,34 @@ const { Pool } = require("pg");
 const app = express();
 const PORT = process.env.PORT || 3000;
 const FRONTEND_ORIGIN = process.env.FRONTEND_ORIGIN || "*";
-const DATABASE_URL = process.env.DATABASE_URL;
+const DATABASE_SSL = process.env.DATABASE_SSL || "true";
+
+function buildDatabaseUrlFromParts() {
+  const host = process.env.DB_HOST;
+  const port = process.env.DB_PORT || "5432";
+  const user = process.env.DB_USER;
+  const password = process.env.DB_PASSWORD;
+  const database = process.env.DB_NAME;
+
+  if (!host || !user || !password || !database) {
+    return null;
+  }
+
+  return `postgresql://${encodeURIComponent(user)}:${encodeURIComponent(password)}@${host}:${port}/${database}`;
+}
+
+const DATABASE_URL = process.env.DATABASE_URL || buildDatabaseUrlFromParts();
 
 if (!DATABASE_URL) {
-  console.warn("DATABASE_URL no está definido. Configura la conexión a PostgreSQL antes de desplegar.");
+  console.error(
+    "Configura DATABASE_URL o usa DB_HOST, DB_PORT, DB_USER, DB_PASSWORD y DB_NAME para iniciar la API."
+  );
+  process.exit(1);
 }
 
 const pool = new Pool({
   connectionString: DATABASE_URL,
-  ssl: process.env.DATABASE_SSL === "true" ? { rejectUnauthorized: false } : undefined,
+  ssl: DATABASE_SSL === "true" ? { rejectUnauthorized: false } : undefined,
 });
 
 const createTableQuery = `

@@ -83,10 +83,16 @@ Usa 3 servicios separados:
 4. Usa el directorio `backend` como root si te lo pide.
 5. Configura estas variables:
    - `PORT=3000`
-   - `DATABASE_URL=postgresql://...`
    - `DATABASE_SSL=true`
    - `FRONTEND_ORIGIN=https://tu-frontend.com`
+   - `DB_HOST=db-postgresql-nyc3-56627-do-user-31632700-0.k.db.ondigitalocean.com`
+   - `DB_PORT=25060`
+   - `DB_USER=doadmin`
+   - `DB_PASSWORD=TU_PASSWORD`
+   - `DB_NAME=defaultdb`
 6. Verifica que el backend responda en `/health`.
+
+Tambien puedes usar una sola variable `DATABASE_URL` si prefieres.
 
 ### 3) Subir el frontend
 
